@@ -1,3 +1,9 @@
+# Build
+public/bundle.*
+
+# IDE
+.idea/
+
 # Logs
 logs
 *.log
