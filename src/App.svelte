@@ -3,17 +3,12 @@ import { initMidi, NOTE_OFF, NOTE_ON } from './midi'
 import Notes from './Notes.svelte'
 import Controls from './Controls.svelte'
 import { eventId } from './events'
+import { palette } from './config'
 
 let width
-let last = 0
 let current
+let last = 0
 let order = 0
-
-let palette = [
-  '#9c27b0', '#5964d5', '#2297e8', '#29a0a6',
-  '#43ac74', '#82c161', '#bbd24e', '#eedf3c',
-  '#ffd62c', '#ffc11d', '#f5753c', '#e91e63'
-]
 
 let messages = []
 const notesMap = {}
@@ -74,28 +69,6 @@ function inputHandler (event) {
   }, 9600)
 }
 
-$: current = (last, Object.values(notesMap)
-  .sort((a, b) => a.number - b.number)
-  .map(({ event, number, value, deleted, id, order }, i, { length }) => ({
-    id: order,
-    x: width / 2 + (i - length / 2) * (96 + 32) + 48 + 16,
-    y: 96,
-    size: (24 * value / 127) + 24,
-    color: palette[number % 12],
-    deleted
-  })))
-
-function spiral (index, length) {
-
-}
-
-function normalize (c) {
-  // c.l = 0.75
-  // c.s = 1
-
-  return c.toString()
-}
-
 function hex (n) {
   return `${n < 16 ? '0' : ''}${n.toString(16)}`
 }
@@ -136,10 +109,10 @@ function dat (m) {
 </style>
 <svelte:window bind:innerWidth={width}/>
 <div class="notes">
-  <Notes items={current} {width}/>
+  <Notes {width} {last} map={notesMap} {palette}/>
 </div>
 <div class="controls">
-  <Controls class=controls map={controlsMap} {width} {palette} {last}/>
+  <Controls map={controlsMap} {width} {palette} {last}/>
 </div>
 <div class="x-messages">
     {#each messages.slice(0, 10) as m, index (index)}

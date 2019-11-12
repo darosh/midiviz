@@ -7,6 +7,7 @@ export let y
 export let size = 0
 export let color
 export let deleted
+export let low
 
 let springX = spring(
   x,
@@ -37,7 +38,7 @@ let sizeSpring = spring(
 )
 
 $: springX.set(x)
-$: springY.set(y + deleted ? 168 : 0)
+$: springY.set(y + deleted ? low : 0)
 $: sizeSpring.set(size)
 
 $: if (deleted) {
