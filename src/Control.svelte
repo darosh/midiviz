@@ -14,8 +14,8 @@ export let deleted
 import { tweened } from 'svelte/motion'
 import { linear } from 'svelte/easing'
 
-const progress = tweened(0, {
-  duration: 200,
+const progress = tweened(value, {
+  duration: 100,
   easing: linear
 })
 
