@@ -4,6 +4,7 @@ import Notes from './Notes.svelte'
 import Controls from './Controls.svelte'
 import { eventId } from './events'
 import { palette } from './config'
+import { paletteControls } from './config'
 
 let width
 let current
@@ -112,7 +113,7 @@ function dat (m) {
   <Notes {width} {last} map={notesMap} {palette}/>
 </div>
 <div class="controls">
-  <Controls map={controlsMap} {width} {palette} {last}/>
+  <Controls map={controlsMap} {width} palette={paletteControls} {last}/>
 </div>
 <div class="x-messages">
     {#each messages.slice(0, 10) as m, index (index)}

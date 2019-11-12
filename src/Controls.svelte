@@ -15,7 +15,7 @@ $: items = (last, Object.values(map)
     x: width / 2 + (i - length / 2) * (96 + 32) + 48 + 16,
     y: 128,
     value,
-    color: number === -1 ? '#fff' : palette[number % 12],
+    color: number === -1 ? '#fff' : palette[number % palette.length],
     active
   })))
 </script>
