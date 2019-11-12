@@ -4,7 +4,7 @@ import { spring } from 'svelte/motion'
 export let id
 export let x
 export let y
-export let size = 0
+export let size
 export let color
 export let deleted
 export let low

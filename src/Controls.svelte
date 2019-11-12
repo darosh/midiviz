@@ -14,15 +14,13 @@ $: items = (last, Object.values(map)
     id,
     x: width / 2 + (i - length / 2) * (96 + 32) + 48 + 16,
     y: 128,
-    size: (24 * value / 127) + 24,
     value,
-    color: palette[number % 12],
-    deleted,
+    color: number === -1 ? '#fff' : palette[number % 12],
     active
   })))
 </script>
 <svg width={width} height="320">
     {#each items as item (item.id)}
-      <Control {...item}/>
+      <Control {...item} size={[48, 32, 16]} sizeInactive={[32, 24, 8]}/>
     {/each}
 </svg>

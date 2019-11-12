@@ -30,6 +30,6 @@ function initInput (input, inputHandler) {
   input.addListener(NOTE_OFF, 'all', inputHandler)
   input.addListener(NOTE_ON, 'all', inputHandler)
   // input.addListener(NRPN, 'all', inputHandler)
-  // input.addListener(PITCH_BEND, 'all', inputHandler)
+  input.addListener(PITCH_BEND, 'all', inputHandler)
   // input.addListener(PROGRAM_CHANGE, 'all', inputHandler)
 }

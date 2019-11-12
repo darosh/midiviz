@@ -1,5 +1,5 @@
 <script>
-import { initMidi, NOTE_OFF, NOTE_ON } from './midi'
+import { initMidi, NOTE_OFF, NOTE_ON, PITCH_BEND } from './midi'
 import Notes from './Notes.svelte'
 import Controls from './Controls.svelte'
 import { eventId } from './events'
@@ -27,7 +27,7 @@ function inputHandler (event) {
   messages = messages
 
   const number = event.controller ? event.controller.number : event.note ? event.note.number : -1
-  const value = event.value !== undefined ? event.value : event.rawVelocity !== undefined ? event.rawVelocity : 64
+  const value = event.type === PITCH_BEND ? 127 * (event.value + 1) / 2 : event.value !== undefined ? event.value : event.rawVelocity !== undefined ? event.rawVelocity : 64
 
   if (event.type === NOTE_OFF) {
     if (notesMap[id]) {

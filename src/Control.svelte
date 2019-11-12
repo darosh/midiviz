@@ -1,89 +1,46 @@
 <script>
 import { spring } from 'svelte/motion'
+import { tweened } from 'svelte/motion'
+import { linear } from 'svelte/easing'
+
 import { arc } from 'd3-shape'
 
 export let id
 export let x
 export let y
-export let size
 export let value
 export let color
 export let active
-export let deleted
+export let sizeInactive = [32, 24, 8]
+export let size = [48, 32, 16]
 
-import { tweened } from 'svelte/motion'
-import { linear } from 'svelte/easing'
+const x_ = spring(x, { stiffness: 0.06, damping: 0.5, precision: 1 })
+const y_ = spring(y, { stiffness: 0.1, damping: 0.25, precision: 0.1 })
+const value_ = tweened(value, { duration: 0, easing: linear })
+const outer_ = tweened(size[0], { duration: 200, easing: linear })
+const inner_ = tweened(size[1], { duration: 200, easing: linear })
+const dot_ = spring(size[2], { stiffness: 0.1, damping: 0.5, precision: 0.1 })
+const arcGenerator = arc()
 
-const progress = tweened(value, {
-  duration: 100,
-  easing: linear
-})
-
-const outer = tweened(48, {
-  duration: 200,
-  easing: linear
-})
-
-let arcGenerator = arc()
 let path
 
-let springX = spring(
-  x,
-  {
-    stiffness: 0.06,
-    damping: 0.5,
-    precision: 1
-  }
-)
-
-let springY = spring(
-  y,
-  {
-    stiffness: 0.1,
-    // damping: 0.333,
-    damping: 0.25,
-    precision: 0.1
-  }
-)
-
-let valueSpring = spring(
-  0,
-  {
-    stiffness: 1,
-    damping: 0.1,
-    precision: 0.1
-  }
-)
-
-let activeSpring = spring(
-  active ? 22 : 8,
-  {
-    stiffness: 0.1,
-    damping: 0.5,
-    precision: 0.1
-  }
-)
-
-$: springX.set(x)
-$: springY.set(y)
-$: progress.set(value)
-$: activeSpring.set(active ? 16 : 8)
-$: outer.set(active ? 48 : 32)
-
-// $: if (deleted) {
-//   sizeSpring.set(4)
-// }
+$: x_.set(x)
+$: y_.set(y)
+$: value_.set(value)
+$: outer_.set(active ? size[0] : sizeInactive[0])
+$: inner_.set(active ? size[1] : sizeInactive[1])
+$: dot_.set(active ? size[2] : sizeInactive[2])
 
 $: path = arcGenerator({
-  innerRadius: 24,
-  outerRadius: $outer,
+  innerRadius: $inner_,
+  outerRadius: $outer_,
   startAngle: -Math.PI,
-  endAngle: 2 * Math.PI * ($progress / 127) - Math.PI
+  endAngle: 2 * Math.PI * ($value_ / 127) - Math.PI
 })
 </script>
 
-<g fill={color} transform="translate({[$springX, $springY]})" data-id={id}>
-  <circle r={$activeSpring}/>
+<g fill={color} transform="translate({[$x_, $y_]})" data-id={id}>
+  <circle r={$dot_}/>
   <path d={path}/>
 </g>
 
