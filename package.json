@@ -6,6 +6,7 @@
     "webmidi": "^2.5.1"
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "rollup": "^1.26.5",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-livereload": "^1.0.4",
@@ -18,7 +19,9 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
+    "deploy": "gh-pages -d public",
     "dev": "rollup -c -w",
+    "predeploy": "npm run build",
     "start": "sirv public --single --host 0.0.0.0",
     "start:dev": "sirv public --single --dev --host 0.0.0.0"
   }
