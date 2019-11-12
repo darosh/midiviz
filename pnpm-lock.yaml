@@ -1,14 +1,15 @@
 dependencies:
+  d3-shape: 1.3.5
   webmidi: 2.5.1
 devDependencies:
   rollup: 1.26.5
   rollup-plugin-commonjs: 10.1.0_rollup@1.26.5
   rollup-plugin-livereload: 1.0.4_rollup@1.26.5
   rollup-plugin-node-resolve: 5.2.0_rollup@1.26.5
-  rollup-plugin-svelte: 5.1.1_rollup@1.26.5+svelte@3.13.0
+  rollup-plugin-svelte: 5.1.1_rollup@1.26.5+svelte@3.14.0
   rollup-plugin-terser: 5.1.2_rollup@1.26.5
   sirv-cli: 0.4.5
-  svelte: 3.13.0
+  svelte: 3.14.0
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.5.5:
@@ -255,6 +256,16 @@ packages:
     dev: true
     resolution:
       integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
+  /d3-path/1.0.8:
+    dev: false
+    resolution:
+      integrity: sha512-J6EfUNwcMQ+aM5YPOB8ZbgAZu6wc82f/0WFxrxwV6Ll8wBwLaHLKCqQ5Imub02JriCVVdPjgI+6P3a4EWJCxAg==
+  /d3-shape/1.3.5:
+    dependencies:
+      d3-path: 1.0.8
+    dev: false
+    resolution:
+      integrity: sha512-VKazVR3phgD+MUCldapHD7P9kcrvPcexeX/PkMJmkUov4JM8IxsSg1DvbYoYich9AtdTsa5nNk2++ImPiDiSxg==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -943,13 +954,13 @@ packages:
       rollup: '>=1.11.0'
     resolution:
       integrity: sha512-jUlyaDXts7TW2CqQ4GaO5VJ4PwwaV8VUGA7+km3n6k6xtOEacf61u0VXwN80phY/evMcaS+9eIeJ9MOyDxt5Zw==
-  /rollup-plugin-svelte/5.1.1_rollup@1.26.5+svelte@3.13.0:
+  /rollup-plugin-svelte/5.1.1_rollup@1.26.5+svelte@3.14.0:
     dependencies:
       require-relative: 0.8.7
       rollup: 1.26.5
       rollup-pluginutils: 2.8.2
       sourcemap-codec: 1.4.6
-      svelte: 3.13.0
+      svelte: 3.14.0
     dev: true
     peerDependencies:
       rollup: '>=0.60.0'
@@ -1150,12 +1161,12 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-qe1jfm1Mg7Nq/NSh6XE24gPXROEVsWHxC1LIx//XNlD9iw7YZQGjZNjYN7xGaEG6iKdA8EtNFW6R0gjnVXp+wQ==
-  /svelte/3.13.0:
+  /svelte/3.14.0:
     dev: true
     engines:
       node: '>= 8'
     resolution:
-      integrity: sha512-BqIH6Q6li72goMRccIGlUqASVTBHf24YJ3mTXz0pDs6vP07o2Lv9bDGZgEPhO+zjO72dWJP5x3dLbGQt71P56g==
+      integrity: sha512-BYUxQpkS5fODrQyVVRea8ws2mXJXonwrFVjPjaVQuBPSRtidzn55PsuXJHvAZHHpi+vxBZi/Bimrs7exADX7pA==
   /terser/4.4.0:
     dependencies:
       commander: 2.20.3
@@ -1254,12 +1265,13 @@ packages:
     resolution:
       integrity: sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
 specifiers:
-  rollup: ^1.12.0
-  rollup-plugin-commonjs: ^10.0.0
-  rollup-plugin-livereload: ^1.0.0
+  d3-shape: ^1.3.5
+  rollup: ^1.26.5
+  rollup-plugin-commonjs: ^10.1.0
+  rollup-plugin-livereload: ^1.0.4
   rollup-plugin-node-resolve: ^5.2.0
-  rollup-plugin-svelte: ^5.0.3
+  rollup-plugin-svelte: ^5.1.1
   rollup-plugin-terser: ^5.1.2
-  sirv-cli: ^0.4.4
-  svelte: ^3.0.0
+  sirv-cli: ^0.4.5
+  svelte: ^3.14.0
   webmidi: ^2.5.1

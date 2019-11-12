@@ -23,13 +23,13 @@ export function initMidi (inputHandler) {
 }
 
 function initInput (input, inputHandler) {
-  input.addListener(CHANNEL_AFTERTOUCH, 'all', inputHandler)
-  input.addListener(CHANNEL_MODE, 'all', inputHandler)
+  // input.addListener(CHANNEL_AFTERTOUCH, 'all', inputHandler)
+  // input.addListener(CHANNEL_MODE, 'all', inputHandler)
   input.addListener(CONTROL_CHANGE, 'all', inputHandler)
-  input.addListener(KEY_AFTERTOUCH, 'all', inputHandler)
+  // input.addListener(KEY_AFTERTOUCH, 'all', inputHandler)
   input.addListener(NOTE_OFF, 'all', inputHandler)
   input.addListener(NOTE_ON, 'all', inputHandler)
-  input.addListener(NRPN, 'all', inputHandler)
-  input.addListener(PITCH_BEND, 'all', inputHandler)
-  input.addListener(PROGRAM_CHANGE, 'all', inputHandler)
+  // input.addListener(NRPN, 'all', inputHandler)
+  // input.addListener(PITCH_BEND, 'all', inputHandler)
+  // input.addListener(PROGRAM_CHANGE, 'all', inputHandler)
 }
