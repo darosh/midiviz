@@ -100,7 +100,7 @@ function dat (m) {
 
 .notes {
   position: absolute;
-  top: calc(50vh - 168px);
+  top: calc(50vh - 248px + 48px + 16px);
 }
 
 .controls {
