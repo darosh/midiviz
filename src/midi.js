@@ -19,7 +19,7 @@ export function initMidi (inputHandler) {
     WebMidi.inputs.forEach((input, index) => {
       initInput(input, inputHandler)
     })
-  }, true)
+  })
 }
 
 function initInput (input, inputHandler) {
