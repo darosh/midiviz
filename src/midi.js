@@ -10,14 +10,33 @@ export const NRPN = 'nrpn'
 export const PITCH_BEND = 'pitchbend'
 export const PROGRAM_CHANGE = 'programchange'
 
-export function initMidi (inputHandler) {
+export function initMidi (inputHandler, logHandler) {
   WebMidi.enable(function (err) {
     if (err) {
       console.error('WebMidi could not be enabled.', err)
     }
 
-    WebMidi.inputs.forEach((input, index) => {
+    WebMidi.inputs.forEach((input) => {
+      const { id, name } = input
+      logHandler([id, name, 'on'])
       initInput(input, inputHandler)
+    })
+
+    WebMidi.interface.addEventListener('statechange', event => {
+      const { id, type, state, name } = event.port
+
+      if (type !== 'input') {
+        return
+      }
+
+      logHandler([id, name, state])
+
+      WebMidi.inputs.forEach((input) => {
+        if (!input.hasListener(NOTE_OFF, 'all', inputHandler)) {
+          logHandler([id, name, 'on'])
+          initInput(input, inputHandler)
+        }
+      })
     })
   })
 }
