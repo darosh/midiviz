@@ -10,7 +10,7 @@ export let deleted
 export let low
 
 let springX = spring(x, { stiffness: 0.06, damping: 0.5, precision: 1 })
-let springY = spring(y, { stiffness: 0.1, damping: 0.25, precision: 0.1 })
+let springY = spring(y, { stiffness: 0.1, damping: 0.25, precision: 1 })
 let sizeSpring = spring(size, { stiffness: 0.025, damping: 1, precision: 1 })
 
 $: springX.set(x)
@@ -18,7 +18,6 @@ $: springY.set(y + deleted ? low : 0)
 $: sizeSpring.set(size)
 
 $: if (deleted) {
-  // color = '#000'
   sizeSpring.set(0)
 }
 </script>

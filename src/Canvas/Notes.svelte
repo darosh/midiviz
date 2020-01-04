@@ -9,7 +9,7 @@ export let min = 24
 export let max = 48
 export let margin = 24
 export let pad = 16
-export let low = 168 / 2
+export let low = 168
 
 let items
 let delta
@@ -26,7 +26,7 @@ const TONES = 12
 
 $: delta = max - min
 $: y = max + pad
-$: distance = max * 2 + 3 * margin
+$: distance = max * 2 + margin
 $: y2 = y / 2
 $: height = (max + pad * 2) + low
 $: values = (last, Object.values(map))

@@ -5,6 +5,7 @@ export let id = 0
 export let x = 0
 export let y = 0
 export let r = 100
+export let opacity = 1
 export let color = 'hsl(180, 50%, 50%)'
 
 renderable(({ context }) => {
@@ -17,7 +18,10 @@ renderable(({ context }) => {
 
   // context.fillStyle = grd
   context.fillStyle = color
+  context.globalAlpha = opacity
   context.fill()
+  context.globalAlpha = 1
+  console.log(y)
 })
 
 if (false) {

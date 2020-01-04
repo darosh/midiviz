@@ -182,9 +182,9 @@ mouseMoveHandler()
 </style>
 <svelte:window bind:innerWidth={width}/>
 <svelte:body on:mousemove={mouseMoveHandler}/>
-<div class="notes">
-  <Notes {width} {last} map={notesMap} {palette}/>
-</div>
+<!--<div class="notes">-->
+<!--  <Notes {width} {last} map={notesMap} {palette}/>-->
+<!--</div>-->
 <div class="controls">
   <Controls map={controlsMap} {width} palette={paletteControls} {last}/>
 </div>
@@ -208,8 +208,10 @@ mouseMoveHandler()
       {/each}
   </div>
 {/if}
-<Canvas {width} height={256} attributes={{alpha: false}}>
-  <Background color='hsl(0, 0%, 0%)'/>
-  <CanvasNotes {width} {last} map={notesMap} {palette}/>
-  <FPS/>
-</Canvas>
+<div class="notes">
+  <Canvas {width} height={256} attributes={{alpha: true}}>
+    <Background color='hsl(0, 0%, 0%)'/>
+    <CanvasNotes {width} {last} map={notesMap} {palette}/>
+    <FPS/>
+  </Canvas>
+</div>
