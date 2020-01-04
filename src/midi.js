@@ -23,6 +23,10 @@ export function initMidi (inputHandler, logHandler) {
       initInput(input, inputHandler)
     })
 
+    if (!WebMidi.interface.addEventListener) {
+      return
+    }
+
     WebMidi.interface.addEventListener('statechange', event => {
       const { id, type, state, name } = event.port
 

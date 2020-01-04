@@ -22,7 +22,7 @@
     "deploy": "gh-pages -d public",
     "dev": "rollup -c -w",
     "predeploy": "npm run build",
-    "start": "sirv public --single --port 1337 --host 0.0.0.0",
-    "start:dev": "sirv public --single --dev --port 1337 --host 0.0.0.0"
+    "start": "sirv public --single --port 1337",
+    "start:dev": "sirv public --single --dev --port 1337"
   }
 }
