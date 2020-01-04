@@ -1,7 +1,13 @@
 <script>
 import { initMidi, NOTE_OFF, NOTE_ON, PITCH_BEND } from './midi'
-import Notes from './Notes.svelte'
-import Controls from './Controls.svelte'
+import Notes from './SVG/Notes.svelte'
+import Controls from './SVG/Controls.svelte'
+import Canvas from './Canvas/Canvas.svelte'
+import CanvasNotes from './Canvas/Notes.svelte'
+import CanvasCircle from './Canvas/Circle.svelte'
+import Background from './Canvas/Background.svelte'
+import FPS from './Canvas/FPS.svelte'
+import Text from './Canvas/Text.svelte'
 import { eventId } from './events'
 import { palette } from './config'
 import { paletteControls } from './config'
@@ -202,3 +208,8 @@ mouseMoveHandler()
       {/each}
   </div>
 {/if}
+<Canvas {width} height={256} attributes={{alpha: false}}>
+  <Background color='hsl(0, 0%, 0%)'/>
+  <CanvasNotes {width} {last} map={notesMap} {palette}/>
+  <FPS/>
+</Canvas>

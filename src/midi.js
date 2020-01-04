@@ -1,14 +1,15 @@
 import WebMidi from 'webmidi'
 
-export const CHANNEL_AFTERTOUCH = 'channelaftertouch'
-export const CHANNEL_MODE = 'channelmode'
+// export const CHANNEL_AFTERTOUCH = 'channelaftertouch'
+// export const CHANNEL_MODE = 'channelmode'
 export const CONTROL_CHANGE = 'controlchange'
-export const KEY_AFTERTOUCH = 'keyaftertouch'
+// export const KEY_AFTERTOUCH = 'keyaftertouch'
 export const NOTE_OFF = 'noteoff'
 export const NOTE_ON = 'noteon'
-export const NRPN = 'nrpn'
+// export const NRPN = 'nrpn'
 export const PITCH_BEND = 'pitchbend'
-export const PROGRAM_CHANGE = 'programchange'
+
+// export const PROGRAM_CHANGE = 'programchange'
 
 export function initMidi (inputHandler, logHandler) {
   WebMidi.enable(function (err) {
@@ -31,12 +32,12 @@ export function initMidi (inputHandler, logHandler) {
 
       logHandler([id, name, state])
 
-      WebMidi.inputs.forEach((input) => {
+      for (const input of WebMidi.inputs) {
         if (!input.hasListener(NOTE_OFF, 'all', inputHandler)) {
           logHandler([id, name, 'on'])
           initInput(input, inputHandler)
         }
-      })
+      }
     })
   })
 }
